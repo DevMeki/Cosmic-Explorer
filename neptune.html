@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neptune - Cosmic Explorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        space: {
+                            900: '#0B0D17',
+                            800: '#151932',
+                            accent: '#D0D6F9'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Bellefair', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B0D17;
+            color: #D0D6F9;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Bellefair', serif;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-space-900 text-gray-100 min-h-screen relative overflow-x-hidden flex flex-col">
+
+    <nav
+        class="fixed w-full z-50 top-0 left-0 p-6 flex justify-between items-center bg-space-900/80 backdrop-blur-md border-b border-white/10">
+        <a href="index.html" class="text-3xl font-bold tracking-widest text-white uppercase">Cosmic<span
+                class="text-indigo-400">Explorer</span></a>
+
+        <div class="hidden md:flex gap-8 bg-white/5 px-8 py-4 backdrop-blur-sm rounded-sm">
+            <a href="index.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">00
+                Home</a>
+            <a href="mercury.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">01
+                Mercury</a>
+            <a href="venus.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">02
+                Venus</a>
+            <a href="earth.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">03
+                Earth</a>
+            <a href="mars.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">04
+                Mars</a>
+            <a href="jupiter.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">05
+                Jupiter</a>
+            <a href="saturn.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">06
+                Saturn</a>
+            <a href="uranus.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">07
+                Uranus</a>
+            <a href="neptune.html" class="uppercase tracking-widest pb-1 border-b-2 border-white text-white">08
+                Neptune</a>
+        </div>
+
+        <button id="mobile-menu-button" class="md:hidden text-indigo-400 focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                </path>
+            </svg>
+        </button>
+    </nav>
+
+    <div id="sidebar-backdrop"
+        class="fixed inset-0 bg-black/50 z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <aside id="mobile-sidebar"
+        class="fixed top-0 right-0 h-full w-full max-w-xs bg-space-800 z-50 transform translate-x-full transition-transform duration-300 glass-panel border-l border-white/10">
+        <div class="p-6 flex justify-end">
+            <button id="close-menu-button" class="text-white/50 hover:text-white">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div class="flex flex-col gap-6 px-8 mt-8 text-lg uppercase tracking-widest overflow-y-auto h-full pb-24">
+            <a href="index.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">00</span> Home</a>
+            <a href="mercury.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">01</span> Mercury</a>
+            <a href="venus.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">02</span> Venus</a>
+            <a href="earth.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">03</span> Earth</a>
+            <a href="mars.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">04</span> Mars</a>
+            <a href="jupiter.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">05</span> Jupiter</a>
+            <a href="saturn.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">06</span> Saturn</a>
+            <a href="uranus.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">07</span> Uranus</a>
+            <a href="neptune.html" class="flex gap-4 border-r-4 border-white text-white py-2"><span
+                    class="font-bold text-white">08</span> Neptune</a>
+        </div>
+    </aside>
+
+    <header class="min-h-[70vh] flex items-center justify-center pt-24 px-6 relative overflow-hidden">
+        <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 z-10">
+                <h5 class="text-2xl uppercase tracking-[0.2em] text-blue-700 animate-pulse">08. The Windy Giant</h5>
+                <h1 class="text-7xl md:text-9xl uppercase text-white leading-none">Neptune</h1>
+                <p class="text-indigo-100 text-lg leading-relaxed max-w-md">
+                    Neptune is the eighth and farthest-known Solar planet from the Sun. In the Solar System, it is the
+                    fourth-largest planet by diameter.
+                </p>
+            </div>
+            <div class="relative grid place-items-center">
+                <div
+                    class="w-64 h-64 md:w-96 md:h-96 bg-blue-700 rounded-full shadow-[0_0_80px_rgba(29,78,216,0.4)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-black/50 to-transparent"></div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute inset-0 z-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+    </header>
+
+    <article class="container mx-auto px-6 py-24 prose prose-invert prose-lg max-w-4xl opacity-80">
+        <h2 class="font-serif text-4xl mb-8">The Last Outpost</h2>
+        <p>
+            Neptune is dark, cold, and whipped by supersonic winds. It is the only planet in our solar system not
+            visible to the naked eye and the first predicted by mathematics before its discovery. In 2011 Neptune
+            completed its first 165-year orbit since its discovery in 1846. Neptune is an ice giant, similar to Uranus,
+            but slightly smaller and more massive. Its atmosphere is made of hydrogen, helium, and methane. The methane
+            gives Neptune the same blue color as Uranus, but Neptune is a much deeper, richer blue, suggesting there is
+            an unknown component in the atmosphere that intensifies the color.
+        </p>
+        <p>
+            Neptune's winds are the strongest in the Solar System, reaching reach speeds of 1,200 miles per hour (2,000
+            kilometers per hour). These winds push the frozen clouds of natural gas around the planet at breakneck
+            speeds. Voyager 2 spotted a Great Dark Spot in the southern hemisphere in 1989, a storm large enough to
+            contain the entire Earth. When the Hubble Space Telescope looked for it five years later, it had vanished,
+            only for a new dark spot to appear in the northern hemisphere.
+        </p>
+        <p>
+            Neptune has 16 known moons. Triton is the largest and arguably the most interesting. It orbits the planet in
+            the opposite direction to the planet's rotation (retrograde orbit), suggesting it is a captured object from
+            the Kuiper Belt. Triton is extremely cold, with temperatures dipping to -391 degrees Fahrenheit (-235
+            degrees Celsius). Despite the cold, Voyager 2 discovered geysers of liquid nitrogen spewing 5 miles into its
+            thin atmosphere.
+        </p>
+        <p>
+            (Content Extension...)
+            Neptune exerts a profound gravitational influence on the Kuiper Belt, a region of icy bodies beyond its
+            orbit. Pluto, for example, is in a 2:3 orbital resonance with Neptune, meaning for every three orbits
+            Neptune makes around the Sun, Pluto makes two. This resonance protects Pluto from colliding with the giant
+            planet. Many other "Plutinos" share this resonant orbit.
+        </p>
+        <p>
+            Understanding the internal structure of Neptune is a challenge. It likely has a core of rock and ice,
+            surrounded by a mantle of water, ammonia, and methane ices. Scientists call this "ice," but at the extreme
+            temperatures and pressures inside Neptune, it acts more like a hot, dense fluid. Some models suggest
+            diamonds could rain down through this mantle, accumulating around the core.
+        </p>
+        <p>
+            Since the Voyager 2 flyby in 1989, no spacecraft has visited Neptune. It remains one of the least explored
+            targets in the solar system. Future concepts, such as a Neptune Orbiter or even a probe to dive into its
+            atmosphere, are discussed by space agencies, but the long travel time (over a decade) and high cost make
+            such missions difficult to greenlight. Until then, we must rely on telescopes like Hubble and Webb to
+            monitor its weather and moons from afar.
+        </p>
+        ${Array(6).fill('').map((_, i) => `<p>Neptune Log Entry ${i+1}: Standing on the "surface" of Neptune is
+            impossible as there is no solid ground. You would simply sink through the cloud layers, crushed by
+            increasing pressure and heat, until you reached the superheated mantle. The transition from gas to liquid to
+            "ice" plasma is gradual. It is a world completely hostile to life as we know it, yet beautiful in its
+            violence.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.</p>`).join('')}
+    </article>
+
+    <footer class="text-center py-12 text-white/50 border-t border-white/10 mt-auto">
+        <p>&copy; 2026 Cosmic Explorer. All rights reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

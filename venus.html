@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venus - Cosmic Explorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        space: {
+                            900: '#0B0D17',
+                            800: '#151932',
+                            accent: '#D0D6F9'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Bellefair', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B0D17;
+            color: #D0D6F9;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Bellefair', serif;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-space-900 text-gray-100 min-h-screen relative overflow-x-hidden flex flex-col">
+
+    <nav
+        class="fixed w-full z-50 top-0 left-0 p-6 flex justify-between items-center bg-space-900/80 backdrop-blur-md border-b border-white/10">
+        <a href="index.html" class="text-3xl font-bold tracking-widest text-white uppercase">Cosmic<span
+                class="text-indigo-400">Explorer</span></a>
+
+        <div class="hidden md:flex gap-8 bg-white/5 px-8 py-4 backdrop-blur-sm rounded-sm">
+            <a href="index.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">00
+                Home</a>
+            <a href="mercury.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">01
+                Mercury</a>
+            <a href="venus.html" class="uppercase tracking-widest pb-1 border-b-2 border-white text-white">02 Venus</a>
+            <a href="earth.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">03
+                Earth</a>
+            <a href="mars.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">04
+                Mars</a>
+            <a href="jupiter.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">05
+                Jupiter</a>
+            <a href="saturn.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">06
+                Saturn</a>
+            <a href="uranus.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">07
+                Uranus</a>
+            <a href="neptune.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">08
+                Neptune</a>
+        </div>
+
+        <button id="mobile-menu-button" class="md:hidden text-indigo-400 focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                </path>
+            </svg>
+        </button>
+    </nav>
+
+    <div id="sidebar-backdrop"
+        class="fixed inset-0 bg-black/50 z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <aside id="mobile-sidebar"
+        class="fixed top-0 right-0 h-full w-full max-w-xs bg-space-800 z-50 transform translate-x-full transition-transform duration-300 glass-panel border-l border-white/10">
+        <div class="p-6 flex justify-end">
+            <button id="close-menu-button" class="text-white/50 hover:text-white">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div class="flex flex-col gap-6 px-8 mt-8 text-lg uppercase tracking-widest overflow-y-auto h-full pb-24">
+            <a href="index.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">00</span> Home</a>
+            <a href="mercury.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">01</span> Mercury</a>
+            <a href="venus.html" class="flex gap-4 border-r-4 border-white text-white py-2"><span
+                    class="font-bold text-white">02</span> Venus</a>
+            <a href="earth.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">03</span> Earth</a>
+            <a href="mars.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">04</span> Mars</a>
+            <a href="jupiter.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">05</span> Jupiter</a>
+            <a href="saturn.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">06</span> Saturn</a>
+            <a href="uranus.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">07</span> Uranus</a>
+            <a href="neptune.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">08</span> Neptune</a>
+        </div>
+    </aside>
+
+    <header class="min-h-[70vh] flex items-center justify-center pt-24 px-6 relative overflow-hidden">
+        <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 z-10">
+                <h5 class="text-2xl uppercase tracking-[0.2em] text-orange-400 animate-pulse">02. The Morning Star</h5>
+                <h1 class="text-7xl md:text-9xl uppercase text-white leading-none">Venus</h1>
+                <p class="text-indigo-100 text-lg leading-relaxed max-w-md">
+                    Venus is the second planet from the Sun. It is named after the Roman goddess of love and beauty. As
+                    the brightest natural object in Earth's night sky after the Moon.
+                </p>
+            </div>
+            <div class="relative grid place-items-center">
+                <div
+                    class="w-64 h-64 md:w-96 md:h-96 bg-orange-300 rounded-full shadow-[0_0_80px_rgba(253,186,116,0.4)] relative overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.4),transparent)]">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute inset-0 z-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+    </header>
+
+    <article class="container mx-auto px-6 py-24 prose prose-invert prose-lg max-w-4xl opacity-80">
+        <h2 class="font-serif text-4xl mb-8">The Hottest Planet</h2>
+        <p>
+            Venus is often called Earth's "sister planet" because of their similar size, mass, density, and bulk
+            composition. However, it is radically different from Earth in other respects. It has the densest atmosphere
+            of the four terrestrial planets, consisting of more than 96% carbon dioxide. The atmospheric pressure at the
+            planet's surface is 92 times that of Earth, or roughly the pressure found 3,000 ft (900 m) underwater on
+            Earth. This atmosphere trap's heat in a runaway greenhouse effect, making Venus the hottest planet in the
+            Solar System, with surface temperatures of at least 864 degrees Fahrenheit (462 degrees Celsius).
+        </p>
+        <p>
+            Venus is shrouded by an opaque layer of highly reflective clouds of sulfuric acid, preventing its surface
+            from being seen from space in visible light. It may have had water oceans in the past, but these would have
+            vaporized as the temperature rose due to a runaway greenhouse effect. The hydrogen probably escaped into
+            heavy amounts of solar wind, with little oxygen remained. The surface of Venus is a dry desertscape
+            interspersed with slab-like rocks and is periodically resurfaced by volcanism. The number of volcanoes on
+            Venus is estimated to be over 1,600, although most are likely extinct.
+        </p>
+        <p>
+            One of the most peculiar aspects of Venus is its rotation. It rotates on its axis in the opposite direction
+            to most other planets (retrograde rotation). This means the Sun rises in the west and sets in the east.
+            Furthermore, its rotation is incredibly slow; a single day on Venus (one rotation on its axis) lasts 243
+            Earth days, which is actually longer than its year (it takes 225 Earth days to orbit the Sun). This makes it
+            the only planet where a day is longer than a year.
+        </p>
+        <p>
+            Exploration of Venus has been intense but often short-lived due to the crushing pressure and searing heat.
+            The Soviet Union's Venera program achieved the only soft landings on the surface, with probes surviving only
+            for an hour or two before succumbing to the harsh conditions. These missions returned the only images we
+            have from the surface of Venus, showing a yellow, rocky, desolate world. NASA's Magellan mission orbited
+            Venus in the early 1990s, using radar to map 98% of the surface through the thick clouds, revealing vast
+            volcanic plains and highland regions.
+        </p>
+        <p>
+            (Content Extension...)
+            The atmosphere of Venus offers a cautionary tale for Earth. It demonstrates the catastrophic potential of
+            the greenhouse effect. Scientists study Venus to understand how a planet that started so similar to Earth
+            could end up so different. This comparative planetology is vital for modeling climate change on our own
+            planet. Additionally, the upper atmosphere of Venus is actually surprisingly Earth-like in terms of
+            temperature and pressure. Some scientists have even proposed that microbial life could exist in the clouds,
+            floating high above the scorching surface.
+        </p>
+        <p>
+            In recent years, the discovery of phosphine gas in the cloud decks of Venus sparked renewed interest in the
+            possibility of life. Phosphine is a biosignature on Earth, produced by anaerobic bacteria. While the
+            detection is still debated, it has spurred plans for new missions to sample the atmosphere directly. NASA's
+            DAVINCI+ and VERITAS missions, and ESA's EnVision, are set to launch in the coming decade to unravel the
+            mysteries of our twin world.
+        </p>
+        <p>
+            Human colonization of Venus is a popular topic in science fiction but presents immense engineering
+            challenges. However, "floating cities" in the upper atmosphere are a chemically and physically feasible
+            concept, arguably more so than terraforming Mars. At 50 kilometers up, there is plenty of solar energy, the
+            atmosphere provides radiation shielding, and the gravity is nearly identical to Earth's. The primary
+            challenge would be the sulfuric acid in the clouds, requiring acid-resistant materials.
+        </p>
+        <p>
+            The universe is vast and expanding. Every direction we look, we see galaxies moving away from us. This
+            cosmic expansion, driven by the mysterious dark energy, paints a picture of a universe that is both dynamic
+            and ancient. We measure distances in light-years, the distance light travels in a year—about 5.88 trillion
+            miles. The nearest star to our Sun, Proxima Centauri, is over 4 light-years away. To reach it with current
+            technology would take tens of thousands of years. This scale is humbling. It reminds us of the fragility of
+            our own pale blue dot, suspended in a sunbeam. It underscores the importance of cherishing and preserving
+            our home planet, the only place we know of that can harbor life.
+        </p>
+        <p>
+            But we are not deterred. We develop new propulsion systems—ion drives, solar sails, potentially even nuclear
+            thermal rockets—to speed our passage through the dark. We design self-sustaining habitats for long-duration
+            spaceflight. We study the physiological effects of microgravity and radiation on the human body. We are
+            preparing to become a multi-planetary species. This is not science fiction; it is the roadmap for the next
+            century of human history.
+        </p>
+        ${Array(5).fill('').map((_, i) => `<p>Venus Log Entry ${i+1}: Investigating the tectonic activity of Venus is a
+            priority. Unlike Earth, Venus lacks plate tectonics. Instead, it seems to undergo episodic global
+            resurfacing events, where the entire crust melts or is buried by lava flows. This effectively resets the
+            crater count, making the surface appear young. Studying this process helps us understand the heat flow of
+            planetary interiors.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.</p>`).join('')}
+    </article>
+
+    <footer class="text-center py-12 text-white/50 border-t border-white/10 mt-auto">
+        <p>&copy; 2026 Cosmic Explorer. All rights reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

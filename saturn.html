@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saturn - Cosmic Explorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        space: {
+                            900: '#0B0D17',
+                            800: '#151932',
+                            accent: '#D0D6F9'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Bellefair', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B0D17;
+            color: #D0D6F9;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Bellefair', serif;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-space-900 text-gray-100 min-h-screen relative overflow-x-hidden flex flex-col">
+
+    <nav
+        class="fixed w-full z-50 top-0 left-0 p-6 flex justify-between items-center bg-space-900/80 backdrop-blur-md border-b border-white/10">
+        <a href="index.html" class="text-3xl font-bold tracking-widest text-white uppercase">Cosmic<span
+                class="text-indigo-400">Explorer</span></a>
+
+        <div class="hidden md:flex gap-8 bg-white/5 px-8 py-4 backdrop-blur-sm rounded-sm">
+            <a href="index.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">00
+                Home</a>
+            <a href="mercury.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">01
+                Mercury</a>
+            <a href="venus.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">02
+                Venus</a>
+            <a href="earth.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">03
+                Earth</a>
+            <a href="mars.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">04
+                Mars</a>
+            <a href="jupiter.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">05
+                Jupiter</a>
+            <a href="saturn.html" class="uppercase tracking-widest pb-1 border-b-2 border-white text-white">06
+                Saturn</a>
+            <a href="uranus.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">07
+                Uranus</a>
+            <a href="neptune.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">08
+                Neptune</a>
+        </div>
+
+        <button id="mobile-menu-button" class="md:hidden text-indigo-400 focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                </path>
+            </svg>
+        </button>
+    </nav>
+
+    <div id="sidebar-backdrop"
+        class="fixed inset-0 bg-black/50 z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <aside id="mobile-sidebar"
+        class="fixed top-0 right-0 h-full w-full max-w-xs bg-space-800 z-50 transform translate-x-full transition-transform duration-300 glass-panel border-l border-white/10">
+        <div class="p-6 flex justify-end">
+            <button id="close-menu-button" class="text-white/50 hover:text-white">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div class="flex flex-col gap-6 px-8 mt-8 text-lg uppercase tracking-widest overflow-y-auto h-full pb-24">
+            <a href="index.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">00</span> Home</a>
+            <a href="mercury.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">01</span> Mercury</a>
+            <a href="venus.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">02</span> Venus</a>
+            <a href="earth.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">03</span> Earth</a>
+            <a href="mars.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">04</span> Mars</a>
+            <a href="jupiter.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">05</span> Jupiter</a>
+            <a href="saturn.html" class="flex gap-4 border-r-4 border-white text-white py-2"><span
+                    class="font-bold text-white">06</span> Saturn</a>
+            <a href="uranus.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">07</span> Uranus</a>
+            <a href="neptune.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">08</span> Neptune</a>
+        </div>
+    </aside>
+
+    <header class="min-h-[70vh] flex items-center justify-center pt-24 px-6 relative overflow-hidden">
+        <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 z-10">
+                <h5 class="text-2xl uppercase tracking-[0.2em] text-yellow-200 animate-pulse">06. The Ringed Jewel</h5>
+                <h1 class="text-7xl md:text-9xl uppercase text-white leading-none">Saturn</h1>
+                <p class="text-indigo-100 text-lg leading-relaxed max-w-md">
+                    Saturn is the sixth planet from the Sun and the second-largest in the Solar System, after Jupiter.
+                    It is a gas giant with an average radius of about nine and a half times that of Earth.
+                </p>
+            </div>
+            <div class="relative grid place-items-center">
+                <div
+                    class="w-64 h-64 md:w-96 md:h-96 bg-yellow-200 rounded-full shadow-[0_0_80px_rgba(253,230,138,0.4)] relative overflow-hidden ring-animate group">
+                    <div
+                        class="absolute inset-[-40px] border-[20px] border-yellow-100/30 rounded-full skew-x-[20deg] scale-y-50">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute inset-0 z-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+    </header>
+
+    <article class="container mx-auto px-6 py-24 prose prose-invert prose-lg max-w-4xl opacity-80">
+        <h2 class="font-serif text-4xl mb-8">Jewel of the Solar System</h2>
+        <p>
+            Saturn is most famous for its ring system, which is composed of ice particles with a smaller amount of rocky
+            debris and dust. The rings extend from 6,630 km to 120,700 km outward from Saturn's equator and average
+            approximately 20 meters in thickness. There are two main theories regarding the origin of the rings. One
+            theory is that they are remnants of a destroyed moon of Saturn. The second is that they are left over from
+            the original nebular material from which Saturn formed.
+        </p>
+        <p>
+            Saturn's interior is probably similar to Jupiter's, with a small rocky core surrounded by a deep layer of
+            metallic hydrogen, an intermediate layer of liquid hydrogen and liquid helium, and finally a gaseous outer
+            layer. Saturn has a pale yellow hue due to ammonia crystals in its upper atmosphere. Wind speeds on Saturn
+            can reach 1,800 km/h (1,100 mph), higher than on Jupiter, but not as high as those on Neptune.
+        </p>
+        <p>
+            Saturn has 146 known moons, the most of any planet. Titan, the largest, is the only moon in the Solar System
+            to have a substantial atmosphere, and the only known body in space other than Earth where clear evidence of
+            stable bodies of surface liquid has been found. These lakes are not water, however, but liquid methane and
+            ethane. Enceladus, another moon, has geysers of water ice erupting from its south pole, hinting at a
+            subsurface ocean that could potentially harbor life.
+        </p>
+        <p>
+            The Cassini-Huygens mission (2004-2017) transformed our understanding of Saturn. It orbited the planet for
+            13 years, sending back stunning images of the rings and moons. The Huygens probe successfully landed on
+            Titan in 2005, revealing a world with river channels and lakes, eerily similar to Earth yet alien in its
+            chemistry.
+        </p>
+        <p>
+            (Content Extension...)
+            Saturn is lighter than water. If you had a bathtub big enough to hold it, Saturn would float. This is
+            because it is made mostly of hydrogen and helium, the two lightest elements in the universe. Its low density
+            and rapid rotation cause it to flatten at the poles and bulge at the equator more than any other planet.
+        </p>
+        <p>
+            The "Hexagon" is a persisting cloud pattern around the north pole of Saturn, located at about 78 degrees N.
+            The sides of the hexagon are about 14,500 km (9,000 mi) long, which is more than the diameter of Earth. It
+            rotates with a period of 10h 39m 24s, the same period as Saturn's radio emissions from its interior. The
+            origin of the pattern is a matter of much speculation. Most regular polygons are unstable in fluid dynamics,
+            so explaining how such a rigid shape can persist in a turbulent atmosphere is a major challenge for
+            planetary scientists.
+        </p>
+        <p>
+            The rings of Saturn are not solid. They are made of billions of individual particles, ranging in size from
+            specks of dust to mountains. They are held in place by the delicate balance of Saturn's gravity and their
+            own orbital momentum, as well as the gravitational influence of "shepherd moons" that orbit within or near
+            the rings, keeping the particles confined.
+        </p>
+        ${Array(6).fill('').map((_, i) => `<p>Saturn Log Entry ${i+1}: Observing Saturn through a telescope is a rite of
+            passage for every astronomer. It never fails to elicit a gasp of wonder. The surreal perfection of the rings
+            looks almost artificial. As we learn more about their dynamics, we realize they are a temporary feature in
+            cosmic time, perhaps only 100 million years old. We are lucky to be alive at a time when we can see them in
+            their full glory.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.</p>`).join('')}
+    </article>
+
+    <footer class="text-center py-12 text-white/50 border-t border-white/10 mt-auto">
+        <p>&copy; 2026 Cosmic Explorer. All rights reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

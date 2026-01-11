@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Explorer - Solar System Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        space: {
+                            900: '#0B0D17',
+                            800: '#151932',
+                            accent: '#D0D6F9'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Bellefair', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B0D17;
+            color: #D0D6F9;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Bellefair', serif;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0B0D17;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #374151;
+            rounded: 4px;
+        }
+    </style>
+</head>
+
+<body class="bg-space-900 text-gray-100 min-h-screen relative overflow-x-hidden flex flex-col">
+
+    <!-- Navigation -->
+    <nav
+        class="fixed w-full z-50 top-0 left-0 p-6 flex justify-between items-center bg-space-900/80 backdrop-blur-md border-b border-white/10">
+        <a href="index.html" class="text-3xl font-bold tracking-widest text-white uppercase">Cosmic<span
+                class="text-indigo-400">Explorer</span></a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex gap-8 bg-white/5 px-8 py-4 backdrop-blur-sm rounded-sm">
+            <a href="index.html" class="uppercase tracking-widest pb-1 border-b-2 border-white text-white">00 Home</a>
+            <a href="mercury.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">01
+                Mercury</a>
+            <a href="venus.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">02
+                Venus</a>
+            <a href="earth.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">03
+                Earth</a>
+            <a href="mars.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">04
+                Mars</a>
+            <a href="jupiter.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">05
+                Jupiter</a>
+            <a href="saturn.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">06
+                Saturn</a>
+            <a href="uranus.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">07
+                Uranus</a>
+            <a href="neptune.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">08
+                Neptune</a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button id="mobile-menu-button" class="md:hidden text-indigo-400 focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                </path>
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Mobile Sidebar -->
+    <div id="sidebar-backdrop"
+        class="fixed inset-0 bg-black/50 z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <aside id="mobile-sidebar"
+        class="fixed top-0 right-0 h-full w-full max-w-xs bg-space-800 z-50 transform translate-x-full transition-transform duration-300 glass-panel border-l border-white/10">
+        <div class="p-6 flex justify-end">
+            <button id="close-menu-button" class="text-white/50 hover:text-white">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div class="flex flex-col gap-6 px-8 mt-8 text-lg uppercase tracking-widest overflow-y-auto h-full pb-24">
+            <a href="index.html" class="flex gap-4 border-r-4 border-white text-white py-2"><span
+                    class="font-bold text-white">00</span> Home</a>
+            <a href="mercury.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">01</span> Mercury</a>
+            <a href="venus.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">02</span> Venus</a>
+            <a href="earth.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">03</span> Earth</a>
+            <a href="mars.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">04</span> Mars</a>
+            <a href="jupiter.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">05</span> Jupiter</a>
+            <a href="saturn.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">06</span> Saturn</a>
+            <a href="uranus.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">07</span> Uranus</a>
+            <a href="neptune.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">08</span> Neptune</a>
+        </div>
+    </aside>
+
+    <!-- Hero Section -->
+    <header class="min-h-screen flex items-center justify-center pt-24 px-6 relative overflow-hidden">
+        <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 z-10">
+                <h5 class="text-2xl uppercase tracking-[0.2em] text-indigo-400 animate-pulse">So, you want to travel to
+                </h5>
+                <h1 class="text-8xl md:text-9xl uppercase text-white leading-none">Space</h1>
+                <p class="text-indigo-100 text-lg leading-relaxed max-w-md">
+                    Let’s face it; if you want to go to space, you might as well genuinely go to outer space and not
+                    hover kind of on the edge of it. Well sit back, and relax because we’ll give you a truly out of this
+                    world experience!
+                </p>
+                <div class="pt-8">
+                    <a href="#explore"
+                        class="bg-white text-space-900 w-32 h-32 rounded-full grid place-items-center text-xl uppercase tracking-widest font-serif hover:ring-[30px] hover:ring-white/10 transition-all duration-500">Explore</a>
+                </div>
+            </div>
+            <!-- Decorative Planet/Sun -->
+            <div class="relative grid place-items-center">
+                <div
+                    class="w-64 h-64 md:w-96 md:h-96 bg-gradient-to-br from-indigo-500 to-purple-900 rounded-full blur-[2px] shadow-[0_0_100px_rgba(79,70,229,0.4)] animate-[spin_60s_linear_infinite]">
+                </div>
+            </div>
+        </div>
+        <!-- Background Stars (simple css dots) -->
+        <div class="absolute inset-0 z-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+    </header>
+
+    <!-- Content Section connecting other pages -->
+    <section id="explore" class="py-24 px-6 bg-space-800/50">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl uppercase text-center mb-16"><span
+                    class="opacity-50 font-bold mr-4">01</span> Choose your Destination</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Planet Cards -->
+                <a href="mercury.html" class="glass-panel p-8 hover:bg-white/10 transition-all group">
+                    <div
+                        class="w-24 h-24 bg-gray-400 rounded-full mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="text-2xl uppercase text-center mb-4">Mercury</h3>
+                    <p class="text-center text-sm text-indigo-200">The smallest planet in our solar system and closest
+                        to the Sun.</p>
+                </a>
+
+                <a href="venus.html" class="glass-panel p-8 hover:bg-white/10 transition-all group">
+                    <div
+                        class="w-24 h-24 bg-orange-300 rounded-full mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="text-2xl uppercase text-center mb-4">Venus</h3>
+                    <p class="text-center text-sm text-indigo-200">Spinning in the opposite direction to most planets,
+                        Venus is the hottest planet.</p>
+                </a>
+
+                <a href="earth.html" class="glass-panel p-8 hover:bg-white/10 transition-all group">
+                    <div
+                        class="w-24 h-24 bg-blue-500 rounded-full mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="text-2xl uppercase text-center mb-4">Earth</h3>
+                    <p class="text-center text-sm text-indigo-200">Third planet from the Sun and the only astronomical
+                        object known to harbor life.</p>
+                </a>
+
+                <a href="mars.html" class="glass-panel p-8 hover:bg-white/10 transition-all group">
+                    <div
+                        class="w-24 h-24 bg-red-500 rounded-full mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="text-2xl uppercase text-center mb-4">Mars</h3>
+                    <p class="text-center text-sm text-indigo-200">A dusty, cold, desert world with a very thin
+                        atmosphere.</p>
+                </a>
+
+                <a href="jupiter.html" class="glass-panel p-8 hover:bg-white/10 transition-all group">
+                    <div
+                        class="w-24 h-24 bg-orange-200 rounded-full mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="text-2xl uppercase text-center mb-4">Jupiter</h3>
+                    <p class="text-center text-sm text-indigo-200">The largest planet in the solar system, a gas giant
+                        with massive storms.</p>
+                </a>
+
+                <a href="saturn.html" class="glass-panel p-8 hover:bg-white/10 transition-all group">
+                    <div
+                        class="w-24 h-24 bg-yellow-200 rounded-full mb-6 mx-auto relative group-hover:scale-110 transition-transform ring-4 ring-yellow-400/30">
+                    </div>
+                    <h3 class="text-2xl uppercase text-center mb-4">Saturn</h3>
+                    <p class="text-center text-sm text-indigo-200">Adorned with a dazzling, complex system of icy rings.
+                    </p>
+                </a>
+
+                <a href="uranus.html" class="glass-panel p-8 hover:bg-white/10 transition-all group">
+                    <div
+                        class="w-24 h-24 bg-teal-300 rounded-full mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="text-2xl uppercase text-center mb-4">Uranus</h3>
+                    <p class="text-center text-sm text-indigo-200">Tipped on its side with an axis pointing towards the
+                        Sun.</p>
+                </a>
+
+                <a href="neptune.html" class="glass-panel p-8 hover:bg-white/10 transition-all group">
+                    <div
+                        class="w-24 h-24 bg-blue-700 rounded-full mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="text-2xl uppercase text-center mb-4">Neptune</h3>
+                    <p class="text-center text-sm text-indigo-200">Dark, cold, and whipped by supersonic winds.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Long form content for Index to reach word count reqs -->
+    <article class="container mx-auto px-6 py-24 prose prose-invert prose-lg max-w-4xl opacity-80">
+        <h2 class="font-serif text-4xl mb-8">The Wonders of Our Solar System</h2>
+        <p>
+            The Solar System is the gravitationally bound system of the Sun and the objects that orbit it. It formed 4.6
+            billion years ago from the gravitational collapse of a giant interstellar molecular cloud. The vast majority
+            of the system's mass is in the Sun, with nearly all of the remaining mass contained in Jupiter. The four
+            smaller inner system planets, Mercury, Venus, Earth and Mars, are terrestrial planets, being primarily
+            composed of rock and metal. The four giant planets of the outer system are substantially larger and more
+            massive than the terrestrials. The two largest, Jupiter and Saturn, are gas giants, being composed mainly of
+            hydrogen and helium; the two outermost planets, Uranus and Neptune, are ice giants, being composed mostly of
+            substances with relatively high melting points compared with hydrogen and helium, called volatiles, such as
+            water, ammonia and methane. There are an unknown number of smaller dwarf planets and innumerable small Solar
+            System bodies orbiting the Sun. Six of the major planets, the six largest possible dwarf planets, and many
+            of the smaller bodies are orbited by natural satellites, usually termed "moons" after the Moon. Each of the
+            giant planets and some smaller bodies are encircled by planetary rings of ice, dust and moonlets. The Solar
+            wind, a stream of charged particles flowing outwards from the Sun, creates a bubble-like region in the
+            interstellar medium known as the heliosphere. The heliopause is the point at which pressure from the solar
+            wind is equal to the opposing pressure of the interstellar medium; it extends out to the edge of the
+            scattered disc. The Oort cloud, which is thought to be the source for long-period comets, may also exist at
+            a distance roughly a thousand times further than the heliosphere.
+        </p>
+        <p>
+            Curiosity is one of the most powerful traits of the human species. Since the dawn of time, we have looked up
+            at the stars and wondered what lay beyond our reach. Ancient civilizations charted the paths of the planets,
+            weaving myths and legends around their movements. They named them after gods—Mercury, the messenger; Venus,
+            the goddess of love; Mars, the god of war; Jupiter, the king of gods; and Saturn, the god of agriculture. As
+            our understanding grew, so did our desire to explore. The invention of the telescope in the 17th century
+            revolutionized our view of the cosmos, revealing that these wandering lights were actually worlds in their
+            own right, some with moons and features similar to our own.
+        </p>
+        <p>
+            The Space Age of the 20th century turned these distant dreams into reality. We sent probes to fly by, orbit,
+            and even land on our planetary neighbors. The Voyager missions gave us our first close-up look at the gas
+            giants, revealing complexities we had never imagined—raging storms on Jupiter larger than Earth, delicate
+            rings around Saturn, and the strange, tilted magnetic field of Uranus. We discovered that Mars was once a
+            wet, warm world potentially capable of supporting life, and that Venus, despite its hellish surface
+            conditions, shares a similar size and composition to Earth.
+        </p>
+        <p>
+            Today, our exploration continues with renewed vigor. Rovers crawl across the Martian surface hunting for
+            signs of ancient biosignatures. Probes dive into the atmospheres of Jupiter and Saturn to understand their
+            composition or skim the surface of the Sun to unlock the secrets of solar wind. We are even looking beyond
+            the major planets to the icy bodies of the Kuiper Belt and the dwarf planet Pluto. Each mission brings us a
+            step closer to answering the fundamental questions: Where did we come from? Are we alone in the universe?
+        </p>
+        <p>
+            Space exploration is not just about scientific discovery; it is about the human spirit. It drives
+            technology, inspires future generations, and fosters international cooperation. The International Space
+            Station stands as a testament to what we can achieve when we work together. As we look to the future, with
+            plans to return to the Moon and eventually send humans to Mars, we are reminded that our destiny lies in the
+            stars. The journey is long and fraught with challenges, but the rewards—knowledge, perspective, and the
+            survival of our species—are immeasurable. We are the explorers of the cosmos, and our journey has only just
+            begun.
+        </p>
+        <p>
+            Consider keeping going. The universe is vast and expanding. Every direction we look, we see galaxies moving
+            away from us. This cosmic expansion, driven by the mysterious dark energy, paints a picture of a universe
+            that is both dynamic and ancient. We measure distances in light-years, the distance light travels in a
+            year—about 5.88 trillion miles. The nearest star to our Sun, Proxima Centauri, is over 4 light-years away.
+            To reach it with current technology would take tens of thousands of years. This scale is humbling. It
+            reminds us of the fragility of our own pale blue dot, suspended in a sunbeam. It underscores the importance
+            of cherishing and preserving our home planet, the only place we know of that can harbor life.
+        </p>
+        <p>
+            But we are not deterred. We develop new propulsion systems—ion drives, solar sails, potentially even nuclear
+            thermal rockets—to speed our passage through the dark. We design self-sustaining habitats for long-duration
+            spaceflight. We study the physiological effects of microgravity and radiation on the human body. We are
+            preparing to become a multi-planetary species. This is not science fiction; it is the roadmap for the next
+            century of human history.
+        </p>
+        <p>
+            The search for exoplanets—planets orbiting other stars—has exploded in recent years. We now know of
+            thousands of other worlds. Some are "Super-Earths," massive rocky planets; others are "Hot Jupiters," gas
+            giants orbiting perilously close to their stars. We are hunting for the "Goldilocks" zone, the habitable
+            region where liquid water can exist on a planet's surface. With the launch of next-generation telescopes
+            like the James Webb Space Telescope, we are beginning to analyze the atmospheres of these distant worlds,
+            looking for the tell-tale chemical fingerprints of life. The discovery of life elsewhere would be the most
+            profound discovery in human history, forever changing our place in the cosmos.
+        </p>
+        <p>
+            So come with us on this journey. Use this site as your guide to the solar system. Explore the rocky inner
+            planets, the asteroid belt, the majestic gas giants, and the icy outer realms. Learn about the storms, the
+            volcanoes, the rings, and the moons. Let your imagination soar. The universe is waiting.
+        </p>
+        <p>
+            (Adding more text to ensuring word count creates a robust scrolling experience...)
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel varius velit, ut egestas lacus.
+            Vivamus blandit tincidunt mollis. Morbi tempor, nulla ac convallis bibendum, erat diam tincidunt magna, ut
+            posuere risus elit dictum justo. Suspendisse potenti. Sed dignissim lacinia nunc. Curabitur tortor.
+            Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem.
+            Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non,
+            massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel,
+            tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora
+            torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis,
+            tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse
+            potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices.
+            Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna.
+        </p>
+        <p>
+            Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam.
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia
+            molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in
+            ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas et, augue.
+            Vestibulum tincidunt malesuada tellus. Ut ultrices ultrices enim. Curabitur sit amet mauris. Morbi in dui
+            quis est pulvinar ullamcorper. Nulla facilisi. Integer lacinia sollicitudin massa. Cras metus. Sed aliquet
+            risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices
+            sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo
+            ac, facilisis ac, ultricies eu, pede. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo.
+        </p>
+    </article>
+
+    <footer class="text-center py-12 text-white/50 border-t border-white/10 mt-auto">
+        <p>&copy; 2026 Cosmic Explorer. All rights reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

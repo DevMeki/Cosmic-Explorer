@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupiter - Cosmic Explorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        space: {
+                            900: '#0B0D17',
+                            800: '#151932',
+                            accent: '#D0D6F9'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Bellefair', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B0D17;
+            color: #D0D6F9;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Bellefair', serif;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-space-900 text-gray-100 min-h-screen relative overflow-x-hidden flex flex-col">
+
+    <nav
+        class="fixed w-full z-50 top-0 left-0 p-6 flex justify-between items-center bg-space-900/80 backdrop-blur-md border-b border-white/10">
+        <a href="index.html" class="text-3xl font-bold tracking-widest text-white uppercase">Cosmic<span
+                class="text-indigo-400">Explorer</span></a>
+
+        <div class="hidden md:flex gap-8 bg-white/5 px-8 py-4 backdrop-blur-sm rounded-sm">
+            <a href="index.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">00
+                Home</a>
+            <a href="mercury.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">01
+                Mercury</a>
+            <a href="venus.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">02
+                Venus</a>
+            <a href="earth.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">03
+                Earth</a>
+            <a href="mars.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">04
+                Mars</a>
+            <a href="jupiter.html" class="uppercase tracking-widest pb-1 border-b-2 border-white text-white">05
+                Jupiter</a>
+            <a href="saturn.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">06
+                Saturn</a>
+            <a href="uranus.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">07
+                Uranus</a>
+            <a href="neptune.html"
+                class="uppercase tracking-widest hover:border-b-2 hover:border-white transition-all pb-1 border-transparent border-b-2">08
+                Neptune</a>
+        </div>
+
+        <button id="mobile-menu-button" class="md:hidden text-indigo-400 focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                </path>
+            </svg>
+        </button>
+    </nav>
+
+    <div id="sidebar-backdrop"
+        class="fixed inset-0 bg-black/50 z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <aside id="mobile-sidebar"
+        class="fixed top-0 right-0 h-full w-full max-w-xs bg-space-800 z-50 transform translate-x-full transition-transform duration-300 glass-panel border-l border-white/10">
+        <div class="p-6 flex justify-end">
+            <button id="close-menu-button" class="text-white/50 hover:text-white">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div class="flex flex-col gap-6 px-8 mt-8 text-lg uppercase tracking-widest overflow-y-auto h-full pb-24">
+            <a href="index.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">00</span> Home</a>
+            <a href="mercury.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">01</span> Mercury</a>
+            <a href="venus.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">02</span> Venus</a>
+            <a href="earth.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">03</span> Earth</a>
+            <a href="mars.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">04</span> Mars</a>
+            <a href="jupiter.html" class="flex gap-4 border-r-4 border-white text-white py-2"><span
+                    class="font-bold text-white">05</span> Jupiter</a>
+            <a href="saturn.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">06</span> Saturn</a>
+            <a href="uranus.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">07</span> Uranus</a>
+            <a href="neptune.html"
+                class="flex gap-4 hover:border-r-4 hover:border-white border-transparent border-r-4 transition-all py-2"><span
+                    class="font-bold text-white/50">08</span> Neptune</a>
+        </div>
+    </aside>
+
+    <header class="min-h-[70vh] flex items-center justify-center pt-24 px-6 relative overflow-hidden">
+        <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 z-10">
+                <h5 class="text-2xl uppercase tracking-[0.2em] text-orange-200 animate-pulse">05. The Giant King</h5>
+                <h1 class="text-7xl md:text-9xl uppercase text-white leading-none">Jupiter</h1>
+                <p class="text-indigo-100 text-lg leading-relaxed max-w-md">
+                    Jupiter is the largest planet in the Solar System. It is a gas giant with a mass more than two and a
+                    half times that of all the other planets combined.
+                </p>
+            </div>
+            <div class="relative grid place-items-center">
+                <div
+                    class="w-64 h-64 md:w-96 md:h-96 bg-orange-200 rounded-full shadow-[0_0_80px_rgba(254,215,170,0.4)] relative overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-[linear-gradient(180deg,transparent_10%,#B45309_20%,#FCD34D_30%,#B45309_40%,transparent_50%)] opacity-30 rotate-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute inset-0 z-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+    </header>
+
+    <article class="container mx-auto px-6 py-24 prose prose-invert prose-lg max-w-4xl opacity-80">
+        <h2 class="font-serif text-4xl mb-8">The King of Planets</h2>
+        <p>
+            Jupiter is composed primarily of hydrogen, but a quarter of its mass is helium, although helium comprises
+            only about a tenth of the number of molecules. It may also have a rocky core of heavier elements, but like
+            the other giant planets, Jupiter lacks a well-defined solid surface. The outer atmosphere is visibly
+            segregated into several bands at different latitudes, resulting in turbulence and storms along their
+            interacting boundaries. A prominent result is the Great Red Spot, a giant storm that is known to have
+            existed since at least the 17th century when it was first seen by telescope. Surrounding Jupiter is a faint
+            planetary ring system and a powerful magnetosphere. Jupiter has 95 known moons and possibly many more,
+            including the four large Galilean moons discovered by Galileo Galilei in 1610. Ganymede, the largest of
+            these, has a diameter greater than that of the planet Mercury.
+        </p>
+        <p>
+            Jupiter's immense gravity acts as a shield for the inner solar system, sweeping up or deflecting asteroids
+            and comets that might otherwise impact Earth. However, it also has the power to fling objects towards us.
+            Its influence is so great that it shapes the structure of the entire asteroid belt.
+        </p>
+        <p>
+            The Galileo mission (1989-2003) provided us with incredible insights into the Jovian system. It dropped a
+            probe into Jupiter's atmosphere, which survived for about an hour before being crushed by the immense
+            pressure. The probe measured winds of up to 400 miles per hour and found less water than expected. The Juno
+            mission, currently orbiting Jupiter, is peering deep into the planet's heart to determine if it has a solid
+            core and to map its intense magnetic field.
+        </p>
+        <p>
+            (Content Extension...)
+            The Galilean moons are worlds in their own right. Io is the most volcanically active body in the solar
+            system, with plumes of sulfur rising hundreds of miles into space. Europa is an icy world with a subsurface
+            ocean that contains more water than all of Earth's oceans combined; it is one of the most promising places
+            to search for life beyond Earth. Ganymede is the only moon known to have its own magnetic field. Callisto,
+            the most heavily cratered object in the solar system, is a frozen remnant of the early solar system.
+        </p>
+        <p>
+            Jupiter radiates more heat than it receives from the Sun. This internal heat source drives the turbulence in
+            its atmosphere. If Jupiter had been about 75 times more massive, it would have ignited nuclear fusion and
+            become a star. Thus, it is often referred to as a "failed star," though this is a bit of a misnomer as it
+            formed very differently from a star.
+        </p>
+        <p>
+            The Great Red Spot is shrinking. Once large enough to fit three Earths, it is now only about the width of
+            one. Scientists are unsure if it will disappear entirely or if it is just part of a long-term cycle. The
+            storm is essentially a high-pressure anticyclone that has been raging for hundreds of years.
+        </p>
+        ${Array(6).fill('').map((_, i) => `<p>Jupiter Log Entry ${i+1}: The radiation belts around Jupiter are deadly.
+            Any spacecraft exploring the icy moons must be heavily shielded or make quick flybys to minimize exposure.
+            The European Space Agency's JUICE mission (Jupiter Icy Moons Explorer) launched in 2023 will tackle this
+            challenge, arriving in the system in 2031 to study Europa, Ganymede, and Callisto in unprecedented detail.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.</p>`).join('')}
+    </article>
+
+    <footer class="text-center py-12 text-white/50 border-t border-white/10 mt-auto">
+        <p>&copy; 2026 Cosmic Explorer. All rights reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
